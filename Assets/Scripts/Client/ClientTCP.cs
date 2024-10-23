@@ -4,10 +4,7 @@ using System.Text;
 using UnityEngine;
 using System.Threading;
 using TMPro;
-using UnityEngine.tvOS;
-using System.Net.WebSockets;
-using UnityEditor.PackageManager;
-using static ServerTCP;
+using UnityEngine.UI;
 
 public class ClientTCP : MonoBehaviour
 {
@@ -15,6 +12,7 @@ public class ClientTCP : MonoBehaviour
     TextMeshProUGUI UItext;
     string clientText;
     Socket server;
+    public InputField enterIP;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +42,14 @@ public class ClientTCP : MonoBehaviour
         //When calling connect and succeeding, our server socket will create a
         //connection between this endpoint and the server's endpoint
 
-        IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("192.168.56.1"),9050);
+        IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(enterIP.text),9050);
 
         server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         server.Connect(ipep);
 
         //TO DO 4
-        //With an established connection, we want to send a message so the server aacknowledges us
+        //With an established connection, we want to send a message so the server acknowledges us
         //Start the Send Thread
         Thread sendThread = new Thread(Send);
         sendThread.Start();

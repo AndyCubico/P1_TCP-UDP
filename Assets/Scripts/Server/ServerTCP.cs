@@ -4,8 +4,6 @@ using System.Net.Sockets;
 using System.Threading;
 using TMPro;
 using System.Text;
-using UnityEditor.Experimental.GraphView;
-using System.Net.WebSockets;
 
 public class ServerTCP : MonoBehaviour
 {
@@ -44,7 +42,7 @@ public class ServerTCP : MonoBehaviour
         //Create and bind the socket
         //Any IP that wants to connect to the port 9050 with TCP, will communicate with this socket
         //Don't forget to set the socket in listening mode
-        socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Tcp);
+        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 9050);
 

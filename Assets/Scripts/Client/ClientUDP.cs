@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using System.Threading;
 using TMPro;
+using UnityEngine.UI;
 
 public class ClientUDP : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ClientUDP : MonoBehaviour
     public GameObject UItextObj;
     TextMeshProUGUI UItext;
     string clientText;
+    public InputField enterIP;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class ClientUDP : MonoBehaviour
         //we are going to send a message to establish our communication so we need an endpoint
         //We need the server's IP and the port we've binded it to before
         //Again, initialize the socket
-        IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("192.168.56.1"), 9050);
+        IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(enterIP.text), 9050);
 
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         //socket.Bind(ipep);

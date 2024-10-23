@@ -31,7 +31,7 @@ public class ServerUDP : MonoBehaviour
 
         IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 9050);
        
-        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Udp);
+        socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         socket.Bind(ipep);
 
         //TO DO 3

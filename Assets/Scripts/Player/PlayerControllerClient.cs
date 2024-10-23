@@ -7,6 +7,7 @@ public class PlayerControllerClient : MonoBehaviour
     public int movSpeed = 100;
     public GameObject consoleUDP;
     public GameObject consoleTCP;
+    public GameObject enterIP;
 
     Animator animator;
 
@@ -59,11 +60,13 @@ public class PlayerControllerClient : MonoBehaviour
         if (nearUDP && Input.GetKeyDown("e"))
         {
             consoleUDP.SetActive(!consoleUDP.activeSelf);
+            enterIP.SetActive(!enterIP.activeSelf);
 
         }
         if (nearTCP && Input.GetKeyDown("e"))
         {
             consoleTCP.SetActive(!consoleTCP.activeSelf);
+            enterIP.SetActive(!enterIP.activeSelf);
 
         }
     }
@@ -87,11 +90,13 @@ public class PlayerControllerClient : MonoBehaviour
         {
             nearTCP = false;
             consoleTCP.SetActive(false);
+            enterIP.SetActive(false);
         }
         if (other.gameObject.CompareTag("ComputerUDP"))
         {
             nearUDP = false;
             consoleUDP.SetActive(false);
+            enterIP.SetActive(false);
         }
     }
 }
